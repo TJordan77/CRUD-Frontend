@@ -5,8 +5,8 @@ import SingleCampus from "./components/SingleCampus";
 import SingleStudent from "./components/SingleStudent";
 import AllStudents from "./components/AllStudents";
 import AllCampuses from "./components/AllCampuses";
-import "./AppStyles.css";
 import NavBar from "./components/NavBar";
+import "./components/AppStyles.css";
 import { BrowserRouter as Router } from "react-router";
 import Home from "./components/Home";
 const App = () => {
