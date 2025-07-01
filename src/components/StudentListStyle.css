@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+.students-list-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 2rem 0 2rem 0 !important;
+    font-family: 'EB Garamond', serif;
+    letter-spacing: .1rem;
+}
+
+.students-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.students-card {
+    background-color: rgb(168, 168, 168);
+    padding: 2.3rem;
+    border-radius: .6rem;
+}
+
+.students-first-name {
+    font-family: 'EB Garamond', serif;;
+}
