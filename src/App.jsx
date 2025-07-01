@@ -1,18 +1,18 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import "./AppStyles.css";
 import NavBar from "./components/NavBar";
-import { BrowserRouter as Router, Routes } from "react-router";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import CampusList from "./components/CampusList";
+
 
 const App = () => {
   return (
     <div>
       <NavBar />
-      <div className="app">
-        <h1>Hello React!</h1>
-        <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
-
-        <Routes>{/* Currently, we don't have any routes defined */}</Routes>
+      <div>
+        <Routes>{/* Currently, we don't have any routes defined */}
+          <Route path="/campuses" element={<CampusList />}></Route>
+        </Routes>
       </div>
     </div>
   );
