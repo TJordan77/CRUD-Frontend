@@ -31,7 +31,7 @@ const CampusList = () => {
                     campus && campus.length > 0 ? (
                         campus.map((campuses, index) => (
                             <div className="campus-card" key={index}>
-                                <img src={campuses.image} alt={campuses.name} className="campus-image" />
+                                <img src={campuses.imageURL} alt={campuses.name} className="campus-image" />
                                 <h2 className="campus-name">{campuses.name}</h2>
                             </div>
                         ))

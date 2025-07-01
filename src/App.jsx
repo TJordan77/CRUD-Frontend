@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import CampusList from "./components/CampusList";
+import StudentList from "./components/StudentList";
 
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
       <div>
         <Routes>{/* Currently, we don't have any routes defined */}
           <Route path="/campuses" element={<CampusList />}></Route>
+          <Route path="/students" element={<StudentList />}></Route>
         </Routes>
       </div>
     </div>
