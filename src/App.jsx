@@ -9,7 +9,6 @@ import "./AppStyles.css";
 import NavBar from "./components/NavBar";
 import { BrowserRouter as Router } from "react-router";
 import Home from "./components/Home";
-
 const App = () => {
   return (
     <div>

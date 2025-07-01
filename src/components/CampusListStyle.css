@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+
+
+.campus-list-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 2rem 0 2rem 0 !important;
+    font-family: 'EB Garamond', serif;
+    letter-spacing: .1rem;
+}
+
+.campus-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.campus-card {
+    background-color: rgb(168, 168, 168);
+    padding: 2.3rem;
+    border-radius: .6rem;
+}
+
+.campus-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    width: 65%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: .6rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.error-message {
+    text-align: center;
+    font-size: 1.5rem;
+    color: red;
+    margin-top: 2rem;
+    font-family: 'Roboto', sans-serif;
+}
