@@ -11,6 +11,7 @@ import { BrowserRouter as Router } from "react-router";
 import Home from "./components/Home";
 import StudentList from "./components/StudentList";
 import CampusList from "./components/CampusList";
+import NewStudent from "./components/NewStudent";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/campuses" element={<CampusList />} />
         <Route path="/campuses/:campusId" element={<SingleCampus />} />
         <Route path="/students/:studentId" element={<SingleStudent />} />
+        <Route path="/addStudent" element={<NewStudent fetchAllStudents={AllStudents} />}></Route>
       </Routes>
     </div>
   );

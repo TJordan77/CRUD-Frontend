@@ -35,5 +35,30 @@ body {
 }
 
 .students-first-name {
-    font-family: 'EB Garamond', serif;;
+    font-family: 'EB Garamond', serif;
+}
+
+.link-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 2.3rem 0 0;
+}
+
+.add-student-button {
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    padding: 10px 20px;  
+    width: 150px;  
+    text-align: center; 
+    border-radius: 5px;  
+    display: inline-block; 
+    font-weight: bold;  
+    font-size: 16px;  
+    box-sizing: border-box;  
+    transition: background-color 0.3s ease; 
+}
+
+.add-student-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
