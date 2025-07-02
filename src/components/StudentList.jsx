@@ -2,6 +2,8 @@ import "./StudentListStyle.css"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
+import { Link } from "react-router";
+import NewStudent from "./NewStudent";
 
 
 const StudentList = () => {
@@ -21,9 +23,14 @@ const StudentList = () => {
         fetchAllStudents();
     }, []);
 
+
+
     return (
         <>
             <h1 className="students-list-title">All Students</h1>
+            <div className="link-container">
+                <Link className="add-student-button" to={'/addStudent'}>+ Add Student</Link>
+            </div>
             <div className="students-container">
                 {students && students.length > 0 ? (
                     students.map((student, index) => (

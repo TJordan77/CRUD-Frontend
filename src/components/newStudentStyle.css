@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+.newStudent-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 2rem 0 2rem 0 !important;
+    font-family: 'EB Garamond', serif;
+    letter-spacing: .1rem;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.student-form {
+    background-color: rgb(185, 185, 185);
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    padding: 2rem;
+    width: 40%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.student-form > input {
+    width: 60%;
+    align-self: center;
+    padding: .8rem;
+    border-radius: 4px;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Roboto', serif;
+    transition: all ease-in 0.3s;
+}
+
+.student-form > input::placeholder{
+    font-size: 1rem;
+    font-family: 'Roboto', serif;
+}
+
+.student-form > input:focus {
+    outline: none;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #0c54a1;
+}
