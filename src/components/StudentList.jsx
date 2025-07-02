@@ -2,7 +2,7 @@ import "./StudentListStyle.css"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import NewStudent from "./NewStudent";
 
 
@@ -33,10 +33,12 @@ const StudentList = () => {
             </div>
             <div className="students-container">
                 {students && students.length > 0 ? (
-                    students.map((student, index) => (
-                        <div className="students-card" key={index}>
+                    students.map((student) => (
+                        <div className="students-card" key={student.id}>
                             <h2 className="students-first-name">
-                                {student.firstName}, {student.lastName}
+                                <Link to={`/students/${student.id}`}>
+                                    {student.firstName}, {student.lastName}
+                                </Link>
                             </h2>
                         </div>
                     ))
