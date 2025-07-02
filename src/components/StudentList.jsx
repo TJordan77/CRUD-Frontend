@@ -7,11 +7,12 @@ import React from "react";
 const StudentList = () => {
     const [students, setStudents] = useState([]);
 
+    const apiUrl = "https://crud-backend-gules-rho.vercel.app";
     async function fetchAllStudents() {
         try {
-            const response = axios.get("http://localhost:8080/api/students");
+            const response = await axios.get(`${apiUrl}/api/students`);
             setStudents(response.data);
-        } catch {
+        } catch (error) {
             console.error("Error fetching Students", error);
         }
     }

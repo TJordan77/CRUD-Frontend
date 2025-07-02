@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const SingleStudent = () => {
@@ -7,10 +7,11 @@ const SingleStudent = () => {
   const [student, setStudent] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const apiUrl = "https://crud-backend-gules-rho.vercel.app";
   useEffect(() => {
     const fetchStudent = async () => {
       try {
-        const { data } = await axios.get(`/api/students/${studentId}`);
+        const { data } = await axios.get(`${apiUrl}/api/students/${studentId}`);
         setStudent(data);
         setLoading(false);
       } catch (error) {
