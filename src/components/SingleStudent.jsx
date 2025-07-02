@@ -11,7 +11,7 @@ const SingleStudent = () => {
   useEffect(() => {
     const fetchStudent = async () => {
       try {
-        const { data } = await axios.get(`${apiUrl}/api/students/${studentId}`);
+        const { data } = await axios.get(`http://localhost:8080/api/students/${studentId}`);
         setStudent(data);
         setLoading(false);
       } catch (error) {

@@ -7,7 +7,7 @@ const AllCampuses = () => {
 
 const apiUrl = "https://crud-backend-gules-rho.vercel.app";
   useEffect(() => {
-    axios.get(`${apiUrl}/api/campuses`)
+    axios.get(`http://localhost:8080/api/campuses`)
       .then((res) => setCampuses(res.data))
       .catch((err) => console.error("Error loading campuses:", err));
   }, []);

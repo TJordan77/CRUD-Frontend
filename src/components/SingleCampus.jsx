@@ -11,7 +11,7 @@ const SingleCampus = () => {
   useEffect(() => {
     const fetchCampus = async () => {
       try {
-        const { data } = await axios.get(`${apiUrl}/api/campuses/${campusId}`);
+        const { data } = await axios.get(`http://localhost:8080/api/campuses/${campusId}`);
         setCampus(data);
         setLoading(false);
       } catch (error) {

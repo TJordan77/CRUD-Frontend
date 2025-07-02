@@ -8,7 +8,7 @@ const AllStudents = () => {
 const apiUrl = "https://crud-backend-gules-rho.vercel.app";
   useEffect(() => {
     axios
-      .get(`${apiUrl}/api/students`)
+      .get(`http://localhost:8080/api/students`)
       .then((res) => setStudents(res.data))
       .catch((err) => console.error("Error loading students:", err));
   }, []);

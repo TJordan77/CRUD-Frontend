@@ -10,7 +10,7 @@ const StudentList = () => {
     const apiUrl = "https://crud-backend-gules-rho.vercel.app";
     async function fetchAllStudents() {
         try {
-            const response = await axios.get(`${apiUrl}/api/students`);
+            const response = await axios.get(`http://localhost:8080/api/students`);
             setStudents(response.data);
         } catch (error) {
             console.error("Error fetching Students", error);
