@@ -7,7 +7,7 @@ const AllStudents = () => {
 
   useEffect(() => {
     axios
-      .get("/api/students")
+      .get("http://localhost:8080/api/students")
       .then((res) => setStudents(res.data))
       .catch((err) => console.error("Error loading students:", err));
   }, []);
