@@ -7,15 +7,12 @@ import AllStudents from "./components/AllStudents";
 import AllCampuses from "./components/AllCampuses";
 import NavBar from "./components/NavBar";
 import "./components/AppStyles.css";
-import { BrowserRouter as Router } from "react-router";
+import { BrowserRouter as Router } from "react-router-dom";
 import Home from "./components/Home";
 const App = () => {
   return (
     <div>
       <NavBar />
-      <div className="app">
-        <h1>Hello React!</h1>
-        <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -25,7 +22,6 @@ const App = () => {
           <Route path="/students/:studentId" element={<SingleStudent />} />
         </Routes>
       </div>
-    </div>
   );
 };
 
