@@ -2,16 +2,19 @@ import "./StudentListStyle.css"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
+import { Link } from "react-router";
+import NewStudent from "./NewStudent";
 
 
 const StudentList = () => {
     const [students, setStudents] = useState([]);
 
+    const apiUrl = "https://crud-backend-gules-rho.vercel.app";
     async function fetchAllStudents() {
         try {
-            const response = axios.get("http://localhost:8080/api/students");
+            const response = await axios.get(`http://localhost:8080/api/students`);
             setStudents(response.data);
-        } catch {
+        } catch (error) {
             console.error("Error fetching Students", error);
         }
     }
@@ -20,9 +23,14 @@ const StudentList = () => {
         fetchAllStudents();
     }, []);
 
+
+
     return (
         <>
             <h1 className="students-list-title">All Students</h1>
+            <div className="link-container">
+                <Link className="add-student-button" to={'/addStudent'}>+ Add Student</Link>
+            </div>
             <div className="students-container">
                 {students && students.length > 0 ? (
                     students.map((student, index) => (

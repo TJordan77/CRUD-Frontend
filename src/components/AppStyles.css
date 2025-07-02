@@ -25,7 +25,7 @@ body {
   min-height: 100vh;
 } */
 
-@keyframes spin {
+/* @keyframes spin {
   from {
     transform: rotate(0deg);
   }
@@ -33,4 +33,4 @@ body {
     transform: rotate(360deg);
   }
 }
-
+ */
