@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const AllCampuses = () => {
   const [campuses, setCampuses] = useState([]);
 
+const apiUrl = "https://crud-backend-gules-rho.vercel.app";
   useEffect(() => {
-    axios
-      .get("/api/campuses")
+    axios.get(`http://localhost:8080/api/campuses`)
       .then((res) => setCampuses(res.data))
       .catch((err) => console.error("Error loading campuses:", err));
   }, []);

@@ -6,9 +6,10 @@ import axios from "axios";
 const CampusList = () => {
   const [campus, setCampuses] = useState([]);
 
+const apiUrl = "https://crud-backend-gules-rho.vercel.app";
   async function fetchAllCampuses() {
     try {
-      const response = axios.get("http://localhost:8080/api/campuses");
+      const response = axios.get(`http://localhost:8080/api/campuses`);
       setCampuses(response.data);
     } catch {
       console.error("Error fetching Campuses", error);
