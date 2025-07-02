@@ -17,6 +17,9 @@ const NavBar = () => {
       <Link to="/addStudent" style={styles.link}>
         Add Students
       </Link>
+      <Link to="/addCampus" style={styles.link}>
+        Add Campus
+      </Link>
     </nav>
   );
 };

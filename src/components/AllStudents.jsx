@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+/*import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 const AllStudents = () => {
   const [students, setStudents] = useState([]);
 
-const apiUrl = "https://crud-backend-gules-rho.vercel.app";
+  const apiUrl = "https://crud-backend-gules-rho.vercel.app";
   useEffect(() => {
     axios
       .get(`http://localhost:8080/api/students`)
@@ -33,4 +33,4 @@ const apiUrl = "https://crud-backend-gules-rho.vercel.app";
   );
 };
 
-export default AllStudents;
+export default AllStudents; */
