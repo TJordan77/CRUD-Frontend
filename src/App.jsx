@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { Routes, Route } from "react-router";
 import SingleCampus from "./components/SingleCampus";
 import SingleStudent from "./components/SingleStudent";
+import NewCampusForm from "./components/NewCampusForm";
 import AllStudents from "./components/AllStudents";
 import AllCampuses from "./components/AllCampuses";
 import NavBar from "./components/NavBar";
@@ -23,7 +24,11 @@ const App = () => {
         <Route path="/campuses" element={<CampusList />} />
         <Route path="/campuses/:campusId" element={<SingleCampus />} />
         <Route path="/students/:studentId" element={<SingleStudent />} />
-        <Route path="/addStudent" element={<NewStudent fetchAllStudents={AllStudents} />}></Route>
+        <Route
+          path="/addStudent"
+          element={<NewStudent fetchAllStudents={AllStudents} />}
+        ></Route>
+        <Route path="/addCampus" element={<NewCampusForm />} />
       </Routes>
     </div>
   );
