@@ -3,6 +3,7 @@ import "./CampusListStyle.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import NewCampusForm from "./NewCampusForm";
+import { Link } from "react-router-dom";
 
 const CampusList = () => {
   const [campus, setCampuses] = useState([]);
@@ -36,18 +37,20 @@ const apiUrl = "https://crud-backend-gules-rho.vercel.app";
       <h1 className="campus-list-title">All Campuses</h1>
       <div className="campus-container">
         {campus && campus.length > 0 ? (
-          campus.map((campuses, index) => (
-            <div className="campus-card" key={index}>
-              <img
-                src={campuses.imageUrl}
-                alt={campuses.name}
-                className="campus-image"
-              />
-              <h2 className="campus-name">{campuses.name}</h2>
-              <button className="delete-button" onClick={() => handleDelete(campuses.id)}>
-                Delete
-              </button>
-            </div>
+          campus.map((campuses) => (
+            <Link to={`/campuses/${campuses.id}`} key={campuses.id} className="campus-card-link">
+              <div className="campus-card">
+                <img
+                  src={campuses.imageUrl}
+                  alt={campuses.name}
+                  className="campus-image"
+                />
+                <h2 className="campus-name">{campuses.name}</h2>
+                <button className="delete-button" onClick={(e) => { e.preventDefault(); handleDelete(campuses.id); }}>
+                  Delete
+                </button>
+              </div>
+            </Link>
           ))
         ) : (
           <p className="error-message">No campuses found.</p>

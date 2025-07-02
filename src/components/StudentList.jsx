@@ -34,13 +34,13 @@ const StudentList = () => {
             <div className="students-container">
                 {students && students.length > 0 ? (
                     students.map((student) => (
-                        <div className="students-card" key={student.id}>
-                            <h2 className="students-first-name">
-                                <Link to={`/students/${student.id}`}>
+                        <Link to={`/students/${student.id}`} key={student.id} className="students-card-link">
+                            <div className="students-card">
+                                <h2 className="students-first-name">
                                     {student.firstName}, {student.lastName}
-                                </Link>
-                            </h2>
-                        </div>
+                                </h2>
+                            </div>
+                        </Link>
                     ))
                 ) : (
                     <p className="error-message">No Students found.</p>
