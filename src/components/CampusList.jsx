@@ -46,9 +46,6 @@ const apiUrl = "https://crud-backend-gules-rho.vercel.app";
                   className="campus-image"
                 />
                 <h2 className="campus-name">{campuses.name}</h2>
-                <button className="delete-button" onClick={(e) => { e.preventDefault(); handleDelete(campuses.id); }}>
-                  Delete
-                </button>
               </div>
             </Link>
           ))
