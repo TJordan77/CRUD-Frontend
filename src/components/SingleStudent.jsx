@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const API_BASE = window.location.hostname === "localhost" ? "http://localhost:8080/api" : "https://crud-backend-gules-rho.vercel.app/api";
+
 const SingleStudent = () => {
   const { studentId } = useParams();
   const [student, setStudent] = useState(null);
@@ -9,20 +11,15 @@ const SingleStudent = () => {
   const [campusStudents, setCampusStudents] = useState([]);
   const Navigate = useNavigate();
 
-  const apiUrl = "https://crud-backend-gules-rho.vercel.app";
   useEffect(() => {
     const fetchStudent = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:8080/api/students/${studentId}`
-        );
+        const { data } = await axios.get(`${API_BASE}/students/${studentId}`);
         setStudent(data);
         setLoading(false);
 
         if (data.campus && data.campus.id) {
-          const campusRes = await axios.get(
-            `http://localhost:8080/api/campuses/${data.campus.id}`
-          );
+          const campusRes = await axios.get(`${API_BASE}/campuses/${data.campus.id}`);
           setCampusStudents(campusRes.data.students || []);
         }
       } catch (error) {
