@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "./newStudentStyle.css"
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const NewStudent = () => {
     const [studentInfo, setStudentInfo] = useState({
@@ -8,12 +9,15 @@ const NewStudent = () => {
         lastName: "",
         email: ""
     })
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // console.log(studentInfo)
         try {
-            await axios.post("http://localhost:8080/api/students", studentInfo)
+            const { data } = await axios.post("http://localhost:8080/api/students", studentInfo)
+            if (data && data.id) {
+                navigate(`/students/${data.id}`);
+            }
         } catch (err) {
             console.log("Error adding a new Student!", err)
         }
