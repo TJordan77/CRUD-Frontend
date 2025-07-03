@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./EditCampus.css";
 
 const EditCampus = () => {
     const { campusId } = useParams();
@@ -102,6 +103,11 @@ const EditCampus = () => {
         <div>
             <h2>Edit Campus</h2>
             <form onSubmit={handleSubmit} className='campus-form'>
+                {form.imageUrl && (
+                    <div>
+                        <img src={form.imageUrl} alt="Campus" className="campus-image-preview" />
+                    </div>
+                )}
                 <label>Name:
                     <input name="name" value={form.name} onChange={handleChange} />
                     {errors.name && <span className="error">{errors.name}</span>}
