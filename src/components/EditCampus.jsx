@@ -12,7 +12,6 @@ const EditCampus = () => {
     const [form, setForm] = useState({ name: "", address: "", description: "", imageUrl: "" });
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(true);
-    // We'll want to handle enrolled students soon
     const [students, setStudents] = useState([]); // For enrolled students
     const [selectedStudentId, setSelectedStudentId] = useState("");
     const [availableStudents, setAvailableStudents] = useState([]); // Students without a campus
@@ -20,7 +19,7 @@ const EditCampus = () => {
     useEffect(() => {
         const fetchCampus = async () => {
             try {
-                const { data } = await axios.get(`https://crud-backend-gules-rho.vercel.app/api/campuses/${campusId}`);
+                const { data } = await axios.get(`${API_BASE}/campuses/${campusId}`);
                 setCampus(data);
                 setForm({
                     name: data.name || "",
@@ -37,8 +36,7 @@ const EditCampus = () => {
         };
         const fetchAvailableStudents = async () => {
             try {
-                const { data } = await axios.get("http://localhost:8080/api/students");
-                // Only students with no campus assigned
+                const { data } = await axios.get(`${API_BASE}/students`);
                 setAvailableStudents(data.filter(s => !s.campusId));
             } catch (error) {
                 console.error("Error fetching available students:", error);
@@ -56,11 +54,9 @@ const EditCampus = () => {
     const handleAddStudent = async () => {
         if (!selectedStudentId) return;
         try {
-            // Assign student to this campus
-            await axios.put(`http://localhost:8080/api/students/${selectedStudentId}`, { campusId: Number(campusId) });
-            // Update UI
+            await axios.put(`${API_BASE}/students/${selectedStudentId}`, { campusId: Number(campusId) });
             const addedStudent = availableStudents.find(s => s.id === Number(selectedStudentId));
-            setStudents(prev => [...prev, addedStudent]); // update the list immediately
+            setStudents(prev => [...prev, addedStudent]);
             setAvailableStudents(prev => prev.filter(s => s.id !== Number(selectedStudentId)));
             setSelectedStudentId("");
         } catch (error) {
@@ -70,8 +66,7 @@ const EditCampus = () => {
 
     const handleRemoveStudent = async (id) => {
         try {
-            await axios.put(`http://localhost:8080/api/students/${id}`, { campusId: null });
-            // Update UI
+            await axios.put(`${API_BASE}/students/${id}`, { campusId: null });
             const removedStudent = students.find(s => s.id === id);
             setStudents(students.filter(s => s.id !== id));
             setAvailableStudents([...availableStudents, removedStudent]);
@@ -82,7 +77,6 @@ const EditCampus = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Simple validation
         const newErrors = {};
         Object.keys(form).forEach((key) => {
             if (!form[key].trim()) newErrors[key] = `${key} is required`;
@@ -90,8 +84,7 @@ const EditCampus = () => {
         setErrors(newErrors);
         if (Object.keys(newErrors).length > 0) return;
         try {
-            await axios.put(`http://localhost:8080/api/campuses/${campusId}`, form);
-            // Redirect to the single campus view page on success
+            await axios.put(`${API_BASE}/campuses/${campusId}`, form);
             navigate(`/campuses/${campusId}`);
         } catch (error) {
             console.error("Error updating campus:", error);
@@ -101,8 +94,7 @@ const EditCampus = () => {
     const handleDeleteCampus = async () => {
         if (window.confirm("Are you sure you want to delete this campus?")) {
             try {
-                await axios.delete(`http://localhost:8080/api/campuses/${campusId}`);
-                // redirect to the campuses list page after delete
+                await axios.delete(`${API_BASE}/campuses/${campusId}`);
                 navigate("/campuses");
             } catch (error) {
                 console.error("Error deleting campus:", error);
@@ -142,7 +134,6 @@ const EditCampus = () => {
                     {errors.imageUrl && <span className="error">{errors.imageUrl}</span>}
                 </label>
                 <br />
-                {/* Enrolled Students List */}
                 <h3>Enrolled Students</h3>
                 <div className="enrolled-students-list">
                     {students.length === 0 ? (
@@ -163,7 +154,6 @@ const EditCampus = () => {
                         ))
                     )}
                 </div>
-                {/* Dropdown for adding students */}
                 <label>Add Student:
                     <select value={selectedStudentId} onChange={e => setSelectedStudentId(e.target.value)}>
                         <option value="">Select student to add</option>
