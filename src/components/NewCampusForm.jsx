@@ -52,7 +52,10 @@ const NewCampusForm = () => {
 
   const handleStudentSelect = (e) => {
     const studentId = e.target.value;
-    if (studentId && !enrolled.some((student) => student.id === studentId)) {
+    if (
+      studentId &&
+      !enrolled.some((student) => String(student.id) === studentId)
+    ) {
       const studentObj = students.find((s) => String(s.id) === studentId);
       if (studentObj) setEnrolled((prev) => [...prev, studentObj]);
     }
