@@ -130,20 +130,25 @@ const EditCampus = () => {
                 <br />
                 {/* Enrolled Students List */}
                 <h3>Enrolled Students</h3>
-                <ul>
+                <div className="enrolled-students-list">
                     {students.length === 0 ? (
-                        <li>No students currently enrolled.</li>
+                        <div className="student-bar">No students currently enrolled.</div>
                     ) : (
                         students.map((student) => (
-                            <li key={student.id}>
-                                {student.firstName} {student.lastName}
-                                <button type="button" onClick={() => handleRemoveStudent(student.id)} style={{ marginLeft: 8 }}>
+                            <div className="student-bar" key={student.id}>
+                                <img src={student.imageUrl} alt={student.firstName} className="student-bar-image" />
+                                <div className="student-bar-info">
+                                    <span className="student-bar-name">{student.firstName} {student.lastName}</span>
+                                    <span className="student-bar-email">{student.email}</span>
+                                    <span className="student-bar-gpa">GPA: {student.gpa ?? 'N/A'}</span>
+                                </div>
+                                <button type="button" className="student-bar-remove" onClick={() => handleRemoveStudent(student.id)}>
                                     Remove
                                 </button>
-                            </li>
+                            </div>
                         ))
                     )}
-                </ul>
+                </div>
                 {/* Dropdown for adding students */}
                 <label>Add Student:
                     <select value={selectedStudentId} onChange={e => setSelectedStudentId(e.target.value)}>
