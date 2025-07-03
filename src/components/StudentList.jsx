@@ -5,13 +5,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NewStudent from "./NewStudent";
 
+const API_BASE = window.location.hostname === "localhost" ? "http://localhost:8080/api" : "https://crud-backend-gules-rho.vercel.app/api";
+
 const StudentList = () => {
   const [students, setStudents] = useState([]);
 
-  const apiUrl = "https://crud-backend-gules-rho.vercel.app";
   async function fetchAllStudents() {
     try {
-      const response = await axios.get(`https://crud-backend-gules-rho.vercel.app/api/students`);
+      const response = await axios.get(`${API_BASE}/students`);
       setStudents(response.data);
     } catch (error) {
       console.error("Error fetching Students", error);
