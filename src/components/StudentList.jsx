@@ -36,6 +36,7 @@ const StudentList = () => {
                     students.map((student) => (
                         <Link to={`/students/${student.id}`} key={student.id} className="students-card-link">
                             <div className="students-card">
+                                <img src={student.imageUrl} alt="Student Image" />
                                 <h2 className="students-first-name">
                                     {student.firstName}, {student.lastName}
                                 </h2>
