@@ -2,19 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const API_BASE = window.location.hostname === "localhost" ? "http://localhost:8080/api" : "https://crud-backend-gules-rho.vercel.app/api";
+
 const SingleCampus = () => {
   const { campusId } = useParams();
   const Navigate = useNavigate();
   const [campus, setCampus] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const apiUrl = "https://crud-backend-gules-rho.vercel.app";
   useEffect(() => {
     const fetchCampus = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:8080/api/campuses/${campusId}`
-        );
+        const { data } = await axios.get(`${API_BASE}/campuses/${campusId}`);
         setCampus(data);
         setLoading(false);
       } catch (error) {
