@@ -144,7 +144,7 @@ const EditCampus = () => {
                         ))
                     )}
                 </ul>
-                /* Dropdown for adding students */
+                {/* Dropdown for adding students */}
                 <label>Add Student:
                     <select value={selectedStudentId} onChange={e => setSelectedStudentId(e.target.value)}>
                         <option value="">Select student to add</option>
