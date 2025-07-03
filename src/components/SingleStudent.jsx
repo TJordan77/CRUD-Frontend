@@ -27,6 +27,7 @@ const SingleStudent = () => {
 
   return (
     <div>
+      <img src={student.imageUrl} alt="Student Image" />
       <h2>
         {student.firstName} {student.lastName}
       </h2>
