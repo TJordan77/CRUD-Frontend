@@ -27,6 +27,8 @@ const SingleCampus = () => {
   if (loading) return <p>Loading....</p>;
   if (!campus) return <p>Campus not found..</p>;
 
+  const enrolled = campus.Students || campus.students || [];
+
   return (
     <div className="single-campus">
       <h2>{campus.name}</h2>
@@ -41,9 +43,9 @@ const SingleCampus = () => {
       </p>
 
       <h3>Enrolled Students:</h3>
-      {campus.Students?.length ? (
+      {enrolled.length ? (
         <ul>
-          {campus.Students.map((student) => (
+          {enrolled.map((student) => (
             <li key={student.id}>
               <Link to={`/students/${student.id}`}>
                 {student.firstName} {student.lastName}
