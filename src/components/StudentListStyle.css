@@ -1,64 +1,141 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-color: whitesmoke;
+  background-color: whitesmoke;
 }
 
 .students-list-title {
-    text-align: center;
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 2rem 0 2rem 0 !important;
-    font-family: 'EB Garamond', serif;
-    letter-spacing: .1rem;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 2rem 0 2rem 0 !important;
+  font-family: 'EB Garamond', serif;
+  letter-spacing: .1rem;
 }
 
 .students-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.students-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem 0;
 }
 
 .students-card {
-    background-color: rgb(168, 168, 168);
-    padding: 2.3rem;
-    border-radius: .6rem;
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1.5px 6px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 220px;
+  max-width: 260px;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.15s;
+  gap: 0.7rem;
+}
+
+.students-card:hover {
+  box-shadow: 0 4px 24px rgba(79,140,255,0.13);
+  transform: translateY(-4px) scale(1.03);
 }
 
 .students-first-name {
-    font-family: 'EB Garamond', serif;
+  font-family: 'EB Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #22223b;
+  margin-bottom: 0.3rem;
 }
 
 .link-container {
-    display: flex;
-    justify-content: flex-end;
-    margin: 0 2.3rem 0 0;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 2.3rem 0 0;
 }
 
 .add-student-button {
-    text-decoration: none;
-    color: white;
-    background-color: #007bff;
-    padding: 10px 20px;  
-    width: 150px;  
-    text-align: center; 
-    border-radius: 5px;  
-    display: inline-block; 
-    font-weight: bold;  
-    font-size: 16px;  
-    box-sizing: border-box;  
-    transition: background-color 0.3s ease; 
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(90deg, #4f8cff 0%, #4361ee 100%);
+  padding: 10px 20px;
+  width: 150px;
+  text-align: center;
+  border-radius: 6px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: background 0.2s, transform 0.1s;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.08);
 }
 
 .add-student-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+  background: linear-gradient(90deg, #4361ee 0%, #4f8cff 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.not-enrolled {
+  color: #e63946;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.student-image {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  background: #e0e0e0;
+  border: 2px solid #e3e3e3;
+}
+
+.campus-link {
+  color: #4361ee;
+  text-decoration: underline;
+  font-size: 0.98rem;
+  transition: color 0.2s;
+}
+
+.campus-link:hover {
+  color: #274690;
+}
+
+.error-message {
+  color: #e63946;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+  .students-container, .students-card-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1rem 0.2rem;
+  }
+  .students-card {
+    min-width: 90vw;
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem;
+  }
 }

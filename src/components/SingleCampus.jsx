@@ -12,7 +12,9 @@ const SingleCampus = () => {
   useEffect(() => {
     const fetchCampus = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:8080/api/campuses/${campusId}`);
+        const { data } = await axios.get(
+          `http://localhost:8080/api/campuses/${campusId}`
+        );
         setCampus(data);
         setLoading(false);
       } catch (error) {
@@ -32,7 +34,9 @@ const SingleCampus = () => {
   return (
     <div className="single-campus">
       <h2>{campus.name}</h2>
-      <button onClick={() => navigate(`/campuses/${campusId}/edit`)} >Edit Campus</button>
+      <button onClick={() => navigate(`/campuses/${campusId}/edit`)}>
+        Edit Campus
+      </button>
       <p>
         <strong>Address:</strong>
         {campus.address}
