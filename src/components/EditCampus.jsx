@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./EditCampus.css";
 
+const API_BASE = window.location.hostname === "localhost" ? "http://localhost:8080/api" : "https://crud-backend-gules-rho.vercel.app/api";
+
 const EditCampus = () => {
     const { campusId } = useParams();
     const navigate = useNavigate();
@@ -18,7 +20,7 @@ const EditCampus = () => {
     useEffect(() => {
         const fetchCampus = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:8080/api/campuses/${campusId}`);
+                const { data } = await axios.get(`https://crud-backend-gules-rho.vercel.app/api/campuses/${campusId}`);
                 setCampus(data);
                 setForm({
                     name: data.name || "",
