@@ -97,99 +97,101 @@ const NewCampusForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="new-campus-form">
-      <h1>New Campus Form</h1>
-      <input
-        type="text"
-        name="name"
-        placeholder="Campus Name"
-        value={formData.name}
-        onChange={handleChange}
-        required
-      />
-      {error.name && <p className="error">{error.name}</p>}
+    <div className="form-container">
+      <form onSubmit={handleSubmit} className="new-campus-form">
+        <h1>New Campus Form</h1>
+        <input
+          type="text"
+          name="name"
+          placeholder="Campus Name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        {error.name && <p className="error">{error.name}</p>}
 
-      <input
-        type="text"
-        name="address"
-        placeholder="Campus Address"
-        value={formData.address}
-        onChange={handleChange}
-        required
-      />
-      {error.address && <p className="error">{error.address}</p>}
+        <input
+          type="text"
+          name="address"
+          placeholder="Campus Address"
+          value={formData.address}
+          onChange={handleChange}
+          required
+        />
+        {error.address && <p className="error">{error.address}</p>}
 
-      <textarea
-        name="description"
-        placeholder="Campus Description"
-        value={formData.description}
-        onChange={handleChange}
-        rows={3}
-        style={{ resize: "vertical", marginBottom: "1rem" }}
-      />
-      {error.description && <p className="error">{error.description}</p>}
+        <textarea
+          name="description"
+          placeholder="Campus Description"
+          value={formData.description}
+          onChange={handleChange}
+          rows={3}
+          style={{ resize: "vertical", marginBottom: "1rem" }}
+        />
+        {error.description && <p className="error">{error.description}</p>}
 
-      <input
-        type="url"
-        name="imageUrl"
-        placeholder="Image URL"
-        value={formData.imageUrl}
-        onChange={handleChange}
-      />
-      {error.imageUrl && <p className="error">{error.imageUrl}</p>}
+        <input
+          type="url"
+          name="imageUrl"
+          placeholder="Image URL"
+          value={formData.imageUrl}
+          onChange={handleChange}
+        />
+        {error.imageUrl && <p className="error">{error.imageUrl}</p>}
 
-      <label htmlFor="student-select">
-        <strong>Enroll Students:</strong>
-      </label>
-      <select
-        id="student-select"
-        value={selectedStudent}
-        onChange={(e) => {
-          setSelectedStudent(e.target.value);
-          handleStudentSelect(e);
-        }}
-      >
-        <option value="">Select a student...</option>
-        {students
-          .filter((s) => !enrolled.some((e) => e.id === s.id))
-          .map((student) => (
-            <option key={student.id} value={student.id}>
-              {student.firstName} {student.lastName} ({student.email})
-            </option>
-          ))}
-      </select>
-
-      {enrolled.length > 0 && (
-        <div style={{ marginTop: "1rem" }}>
-          <strong>Enrolled Students:</strong>
-          <ul style={{ paddingLeft: "1.2rem" }}>
-            {enrolled.map((student) => (
-              <li key={student.id} style={{ marginBottom: "0.3rem" }}>
-                {student.firstName} {student.lastName} ({student.email}){" "}
-                <button
-                  type="button"
-                  onClick={() => handleRemoveStudent(student.id)}
-                  style={{
-                    marginLeft: "0.5rem",
-                    color: "#fff",
-                    background: "#e63946",
-                    border: "none",
-                    borderRadius: "4px",
-                    padding: "2px 8px",
-                    cursor: "pointer",
-                  }}
-                >
-                  Remove
-                </button>
-              </li>
+        <label htmlFor="student-select">
+          <strong>Enroll Students:</strong>
+        </label>
+        <select
+          id="student-select"
+          value={selectedStudent}
+          onChange={(e) => {
+            setSelectedStudent(e.target.value);
+            handleStudentSelect(e);
+          }}
+        >
+          <option value="">-- Select a Student --</option>
+          {students
+            .filter((s) => !enrolled.some((e) => e.id === s.id))
+            .map((student) => (
+              <option key={student.id} value={student.id}>
+                {student.firstName} {student.lastName} ({student.email})
+              </option>
             ))}
-          </ul>
-        </div>
-      )}
+        </select>
 
-      {apiError && <p className="error">{apiError}</p>}
-      <input type="submit" className="submit-button" value="Add Campus" />
-    </form>
+        {enrolled.length > 0 && (
+          <div style={{ marginTop: "1rem" }}>
+            <strong>Enrolled Students:</strong>
+            <ul style={{ paddingLeft: "1.2rem" }}>
+              {enrolled.map((student) => (
+                <li key={student.id} style={{ marginBottom: "0.3rem" }}>
+                  {student.firstName} {student.lastName} ({student.email}){" "}
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveStudent(student.id)}
+                    style={{
+                      marginLeft: "0.5rem",
+                      color: "#fff",
+                      background: "#e63946",
+                      border: "none",
+                      borderRadius: "4px",
+                      padding: "2px 8px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {apiError && <p className="error">{apiError}</p>}
+        <input type="submit" className="submit-button" value="Add Campus" />
+      </form>
+    </div>
   );
 };
 
