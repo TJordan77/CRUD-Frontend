@@ -11,6 +11,8 @@ import StudentList from "./components/StudentList";
 import CampusList from "./components/CampusList";
 import NewStudent from "./components/NewStudent";
 import EditCampus from "./components/EditCampus";
+import EditCampus from "./components/EditStudent";
+
 
 
 const App = () => {
@@ -26,6 +28,7 @@ const App = () => {
         <Route path="/addStudent" element={<NewStudent />} />
         <Route path="/addCampus" element={<NewCampusForm />} />
         <Route path="/campuses/:campusId/edit" element={<EditCampus />} />
+        <Route path="/students/:id/edit" element={<EditStudent />} />
       </Routes>
     </div>
   );
