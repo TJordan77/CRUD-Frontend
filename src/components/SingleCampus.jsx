@@ -33,10 +33,14 @@ const SingleCampus = () => {
 
   return (
     <div className="single-campus">
+      {campus.imageUrl && (
+        <img
+          src={campus.imageUrl}
+          alt={campus.name}
+          className="campus-image-preview"
+        />
+      )}
       <h2>{campus.name}</h2>
-      <button onClick={() => navigate(`/campuses/${campusId}/edit`)}>
-        Edit Campus
-      </button>
       <p>
         <strong>Address:</strong>
         {campus.address}
@@ -60,6 +64,12 @@ const SingleCampus = () => {
       ) : (
         <p>No students currently enrolled at this campus.</p>
       )}
+      <button
+        onClick={() => navigate(`/campuses/${campusId}/edit`)}
+        className="edit-campus-btn"
+      >
+        Edit Campus
+      </button>
     </div>
   );
 };
