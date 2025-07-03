@@ -20,7 +20,7 @@ const NewStudent = () => {
 
   async function fetchAllCampuses() {
     try {
-      const response = await axios.get("${API_BASE}/api/campuses");
+      const response = await axios.get(`${API_BASE}/campuses`);
       setCampuses(response.data);
     } catch (err) {
       console.log("Error fetching all Campuses!", err);
@@ -36,10 +36,7 @@ const NewStudent = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post(
-        '${API_BASE}/students',
-        studentInfo
-      );
+      const { data } = await axios.post(`${API_BASE}/students`, studentInfo);
       if (data && data.id) {
         navigate(`/students/${data.id}`);
       }
