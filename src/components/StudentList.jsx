@@ -39,6 +39,9 @@ const StudentList = () => {
                                 <h2 className="students-first-name">
                                     {student.firstName}, {student.lastName}
                                 </h2>
+                                <p className="campuses-attending">
+                                    {student.campus?.name || "No Campus Assigned"}
+                                </p>
                             </div>
                         </Link>
                     ))
