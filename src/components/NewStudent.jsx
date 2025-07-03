@@ -18,7 +18,7 @@ const NewStudent = () => {
 
   async function fetchAllCampuses() {
     try {
-      const response = await axios.get("http://localhost:8080/api/campuses");
+      const response = await axios.get("https://crud-backend-gules-rho.vercel.app/api/campuses");
       setCampuses(response.data);
     } catch (err) {
       console.log("Error fetching all Campuses!", err);
