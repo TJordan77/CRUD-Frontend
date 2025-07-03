@@ -5,7 +5,7 @@ import axios from "axios";
 const API_BASE = "http://localhost:8080/api";
 
 const EditStudent = () => {
-  const { id } = useParams();                   
+  const {id} = useParams();                   
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
