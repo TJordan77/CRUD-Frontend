@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import axios from "axios";
 
-const API_BASE = "http://localhost:8080/api";
+const API_BASE = "https://crud-backend-gules-rho.vercel.app/";
 
-/**
- * EditStudent – aligned with EditCampus structure for consistent state naming.
- */
 const EditStudent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
