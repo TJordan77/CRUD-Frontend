@@ -3,6 +3,8 @@ import "./newStudentStyle.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE = window.location.hostname === "localhost" ? "http://localhost:8080/api" : "https://crud-backend-gules-rho.vercel.app/api";
+
 const NewStudent = () => {
   const [studentInfo, setStudentInfo] = useState({
     firstName: "",
@@ -18,7 +20,7 @@ const NewStudent = () => {
 
   async function fetchAllCampuses() {
     try {
-      const response = await axios.get("https://crud-backend-gules-rho.vercel.app/api/campuses");
+      const response = await axios.get("${API_BASE}/api/campuses");
       setCampuses(response.data);
     } catch (err) {
       console.log("Error fetching all Campuses!", err);
@@ -35,7 +37,7 @@ const NewStudent = () => {
     event.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/api/students",
+        '${API_BASE}/students',
         studentInfo
       );
       if (data && data.id) {
