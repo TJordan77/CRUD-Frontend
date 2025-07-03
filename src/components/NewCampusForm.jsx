@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "./NewCampusForm.css";
 import axios from "axios";
 
+const API_BASE = window.location.hostname === "localhost" ? "http://localhost:8080/api" : "https://crud-backend-gules-rho.vercel.app/api";
+
 const NewCampusForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -27,7 +29,7 @@ const NewCampusForm = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const { data } = await axios.get("http://localhost:8080/api/students");
+        const { data } = await axios.get(`${API_BASE}/students`);
         setStudents(data);
       } catch (err) {
         console.error("Error fetching students:", err);
@@ -80,8 +82,7 @@ const NewCampusForm = () => {
 
     try {
       setApiError("");
-      // Send campus data with enrolled student IDs
-      await axios.post("http://localhost:8080/api/campuses", {
+      await axios.post(`${API_BASE}/campuses`, {
         ...formData,
         studentIds: enrolled.map((s) => s.id),
       });
