@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const CampusList = () => {
   const [campus, setCampuses] = useState([]);
 
-const apiUrl = "https://crud-backend-gules-rho.vercel.app";
+  const apiUrl = "https://crud-backend-gules-rho.vercel.app";
   async function fetchAllCampuses() {
     try {
       const response = await axios.get("http://localhost:8080/api/campuses");
@@ -35,10 +35,19 @@ const apiUrl = "https://crud-backend-gules-rho.vercel.app";
   return (
     <>
       <h1 className="campus-list-title">All Campuses</h1>
+      <div className="link-container" style={{ marginBottom: "1.5rem" }}>
+        <Link className="add-campus-button" to="/addCampus">
+          + Add Campus
+        </Link>
+      </div>
       <div className="campus-container">
         {campus && campus.length > 0 ? (
           campus.map((campuses) => (
-            <Link to={`/campuses/${campuses.id}`} key={campuses.id} className="campus-card-link">
+            <Link
+              to={`/campuses/${campuses.id}`}
+              key={campuses.id}
+              className="campus-card-link"
+            >
               <div className="campus-card">
                 <img
                   src={campuses.imageUrl}
@@ -46,6 +55,15 @@ const apiUrl = "https://crud-backend-gules-rho.vercel.app";
                   className="campus-image"
                 />
                 <h2 className="campus-name">{campuses.name}</h2>
+                <button
+                  className="delete-button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleDelete(campuses.id);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             </Link>
           ))
