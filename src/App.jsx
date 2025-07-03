@@ -10,6 +10,8 @@ import Home from "./components/Home";
 import StudentList from "./components/StudentList";
 import CampusList from "./components/CampusList";
 import NewStudent from "./components/NewStudent";
+import EditCampus from "./components/EditCampus";
+
 
 const App = () => {
   return (
@@ -23,6 +25,7 @@ const App = () => {
         <Route path="/students/:studentId" element={<SingleStudent />} />
         <Route path="/addStudent" element={<NewStudent />} />
         <Route path="/addCampus" element={<NewCampusForm />} />
+        <Route path="/campuses/:campusId/edit" element={<EditCampus />} />
       </Routes>
     </div>
   );

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SingleCampus = () => {
   const { campusId } = useParams();
+  const navigate = useNavigate();
   const [campus, setCampus] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -29,6 +30,7 @@ const SingleCampus = () => {
   return (
     <div className="single-campus">
       <h2>{campus.name}</h2>
+      <button onClick={() => navigate(`/campuses/${campusId}/edit`)} >Edit Campus</button>
       <p>
         <strong>Address:</strong>
         {campus.address}

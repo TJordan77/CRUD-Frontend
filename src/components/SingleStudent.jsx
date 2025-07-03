@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const SingleStudent = () => {
@@ -38,10 +38,10 @@ const SingleStudent = () => {
       </p>
 
       <h3>Enrolled Campus:</h3>
-      {student.campus ? (
+      {student.Campus ? (
         <p>
           <Link to={`/campuses/${student.campus.id}`}>
-            {student.campus.name}
+            {student.campus.name}{" "}
           </Link>
         </p>
       ) : (
