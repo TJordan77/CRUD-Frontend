@@ -11,7 +11,7 @@ import StudentList from "./components/StudentList";
 import CampusList from "./components/CampusList";
 import NewStudent from "./components/NewStudent";
 import EditCampus from "./components/EditCampus";
-import EditCampus from "./components/EditStudent";
+import EditStudent from "./components/EditStudent";
 
 
 
