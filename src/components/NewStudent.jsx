@@ -13,9 +13,7 @@ const NewStudent = () => {
         event.preventDefault();
         // console.log(studentInfo)
         try {
-            await axios.post("http://localhost:8080/api/students", {
-                studentInfo,
-            })
+            await axios.post("http://localhost:8080/api/students", studentInfo)
         } catch (err) {
             console.log("Error adding a new Student!", err)
         }
