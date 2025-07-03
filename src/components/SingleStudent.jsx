@@ -48,6 +48,10 @@ const SingleStudent = () => {
       ) : (
         <p>This student is not enrolled in any campus.</p>
       )}
+      <button onClick={() => navigate(`/students/${student.id}/edit`)}>
+        Edit Student
+      </button>
+
     </div>
   );
 };
