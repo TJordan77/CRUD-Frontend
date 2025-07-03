@@ -18,16 +18,6 @@ const CampusList = () => {
     }
   }
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this campus?")) return;
-    try {
-      await axios.delete(`http://localhost:8000/api/campuses/${id}`);
-      setCampuses((prevCampuses) => prevCampuses.filter((c) => c.id !== id));
-    } catch (error) {
-      console.error("Error deleting campus", error);
-    }
-  };
-
   useEffect(() => {
     fetchAllCampuses();
   }, []);
@@ -55,15 +45,6 @@ const CampusList = () => {
                   className="campus-image"
                 />
                 <h2 className="campus-name">{campuses.name}</h2>
-                <button
-                  className="delete-button"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleDelete(campuses.id);
-                  }}
-                >
-                  Delete
-                </button>
               </div>
             </Link>
           ))
