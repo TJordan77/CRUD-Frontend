@@ -4,7 +4,7 @@ import axios from "axios";
 
 const SingleCampus = () => {
   const { campusId } = useParams();
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
   const [campus, setCampus] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -50,7 +50,9 @@ const SingleCampus = () => {
         {campus.description}
       </p>
 
-      <h3>Enrolled Students:</h3>
+      <h3>
+        Enrolled Students: <span>{enrolled.length}</span>
+      </h3>
       {enrolled.length ? (
         <ul>
           {enrolled.map((student) => (
@@ -65,7 +67,7 @@ const SingleCampus = () => {
         <p>No students currently enrolled at this campus.</p>
       )}
       <button
-        onClick={() => navigate(`/campuses/${campusId}/edit`)}
+        onClick={() => Navigate(`/campuses/${campusId}/edit`)}
         className="edit-campus-btn"
       >
         Edit Campus
