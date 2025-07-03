@@ -96,6 +96,18 @@ const EditCampus = () => {
         }
     };
 
+    const handleDeleteCampus = async () => {
+        if (window.confirm("Are you sure you want to delete this campus?")) {
+            try {
+                await axios.delete(`http://localhost:8080/api/campuses/${campusId}`);
+                // redirect to the campuses list page after delete
+                navigate("/campuses");
+            } catch (error) {
+                console.error("Error deleting campus:", error);
+            }
+        }
+    };
+
     if (loading) return <p>Loading...</p>;
     if (!campus) return <p>Campus not found</p>;
 
@@ -165,6 +177,9 @@ const EditCampus = () => {
                 </label>
                 <br />
                 <button type="submit">Save Changes</button>
+                <button type="button" className="delete-campus-btn" onClick={handleDeleteCampus}>
+                    Delete Campus
+                </button>
             </form>
         </div>
     );
