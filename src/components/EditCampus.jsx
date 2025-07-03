@@ -101,21 +101,25 @@ const EditCampus = () => {
     return (
         <div>
             <h2>Edit Campus</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='campus-form'>
                 <label>Name:
                     <input name="name" value={form.name} onChange={handleChange} />
+                    {errors.name && <span className="error">{errors.name}</span>}
                 </label>
                 <br />
                 <label>Address:
                     <input name="address" value={form.address} onChange={handleChange} />
+                    {errors.address && <span className="error">{errors.address}</span>}
                 </label>
                 <br />
                 <label>Description:
                     <textarea name="description" value={form.description} onChange={handleChange} />
+                    {errors.description && <span className="error">{errors.description}</span>}
                 </label>
                 <br />
                 <label>Image URL:
                     <input name="imageUrl" value={form.imageUrl} onChange={handleChange} />
+                    {errors.imageUrl && <span className="error">{errors.imageUrl}</span>}
                 </label>
                 <br />
                 {/* Enrolled Students List */}
