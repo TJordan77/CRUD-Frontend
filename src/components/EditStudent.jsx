@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import axios from "axios";
 
-const API_BASE = "https://crud-backend-gules-rho.vercel.app/";
+const API_BASE = "https://crud-backend-gules-rho.vercel.app/api";
 
 const EditStudent = () => {
   const { id } = useParams();
