@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SingleCampus = () => {
   const { campusId } = useParams();
+  const navigate = useNavigate();
   const [campus, setCampus] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -26,9 +27,12 @@ const SingleCampus = () => {
   if (loading) return <p>Loading....</p>;
   if (!campus) return <p>Campus not found..</p>;
 
+  const enrolled = campus.Students || campus.students || [];
+
   return (
     <div className="single-campus">
       <h2>{campus.name}</h2>
+      <button onClick={() => navigate(`/campuses/${campusId}/edit`)} >Edit Campus</button>
       <p>
         <strong>Address:</strong>
         {campus.address}
@@ -39,9 +43,9 @@ const SingleCampus = () => {
       </p>
 
       <h3>Enrolled Students:</h3>
-      {campus.Students?.length ? (
+      {enrolled.length ? (
         <ul>
-          {campus.Students.map((student) => (
+          {enrolled.map((student) => (
             <li key={student.id}>
               <Link to={`/students/${student.id}`}>
                 {student.firstName} {student.lastName}
