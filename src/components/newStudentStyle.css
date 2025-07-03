@@ -13,17 +13,19 @@ body {
 
 .newStudent-title {
     text-align: center;
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 2rem 0 2rem 0 !important;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 1.2rem 0 2rem 0 !important;
+    color: #22223b;
     font-family: 'EB Garamond', serif;
     letter-spacing: .1rem;
 }
 
 .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem auto;
 }
 
 .student-form {
@@ -71,4 +73,103 @@ body {
 .error {
     color: red;
     font-size: 1rem;
+}
+
+.new-student-form {
+  margin: 3rem auto;
+  padding: 2rem 2.5rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1.5px 6px rgba(0, 0, 0, 0.04);
+  max-width: 420px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.new-student-form h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  color: #22223b;
+  text-align: center;
+}
+
+.new-student-form label {
+  font-weight: bold;
+  color: #22223b;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+.new-student-form input[type='text'],
+.new-student-form input[type='email'],
+.new-student-form input[type='url'],
+.new-student-form input[type='number'],
+.new-student-form textarea,
+.new-student-form select {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #c9c9c9;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f8f9fa;
+  transition: border-color 0.2s, background 0.2s;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.new-student-form input[type='text']:focus,
+.new-student-form input[type='email']:focus,
+.new-student-form input[type='url']:focus,
+.new-student-form input[type='number']:focus,
+.new-student-form textarea:focus,
+.new-student-form select:focus {
+  border-color: #4f8cff;
+  outline: none;
+  background: #fff;
+}
+
+.new-student-form textarea {
+  min-height: 80px;
+  max-height: 200px;
+  resize: vertical;
+}
+
+.new-student-form .error {
+  color: #e63946;
+  font-size: 0.95rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.new-student-form .submit-button,
+.new-student-form button[type='submit'] {
+  padding: 0.75rem 0;
+  font-size: 1.1rem;
+  background: linear-gradient(90deg, #4f8cff 0%, #4361ee 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(79, 140, 255, 0.08);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.new-student-form .submit-button:hover,
+.new-student-form button[type='submit']:hover {
+  background: linear-gradient(90deg, #4361ee 0%, #4f8cff 100%);
+  transform: translateY(-2px) scale(1.02);
+}
+
+@media (max-width: 600px) {
+  .new-student-form {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
 }
