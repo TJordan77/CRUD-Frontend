@@ -106,8 +106,8 @@ const EditCampus = () => {
     if (!campus) return <p>Campus not found</p>;
 
     return (
-        <div>
-            <h2>Edit Campus</h2>
+        <div className="edit-container">
+            <h2 className="edit-title">Edit Campus</h2>
             <form onSubmit={handleSubmit} className='campus-form'>
                 {form.imageUrl && (
                     <div>
