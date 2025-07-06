@@ -6,13 +6,15 @@ import NewCampusForm from "./NewCampusForm";
 import { Link } from "react-router-dom";
 
 const CampusList = () => {
-  const [campus, setCampuses] = useState([]);
+  const [campuses, setCampuses] = useState([]);
 
   const API_BASE = window.location.hostname === "localhost" ? "http://localhost:8080/api" : "https://crud-backend-gules-rho.vercel.app/api";
+
 
   async function fetchAllCampuses() {
     try {
       const response = await axios.get(`${API_BASE}/campuses`);
+      console.log("Campus API Response:", response.data);
       setCampuses(response.data);
     } catch (error) {
       console.error("Error fetching Campuses", error);
@@ -32,20 +34,20 @@ const CampusList = () => {
         </Link>
       </div>
       <div className="campus-container">
-        {campus && campus.length > 0 ? (
-          campus.map((campuses) => (
+        {campuses && campuses.length > 0 ? (
+          campuses.map((campus) => (
             <Link
-              to={`/campuses/${campuses.id}`}
-              key={campuses.id}
+              to={`/campuses/${campus.id}`}
+              key={campus.id}
               className="campus-card-link"
             >
               <div className="campus-card">
                 <img
-                  src={campuses.imageUrl}
-                  alt={campuses.name}
+                  src={campus.imageUrl}
+                  alt={campus.name}
                   className="campus-image"
                 />
-                <h2 className="campus-name">{campuses.name}</h2>
+                <h2 className="campus-name">{campus.name}</h2>
               </div>
             </Link>
           ))
