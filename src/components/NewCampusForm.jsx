@@ -71,6 +71,12 @@ const NewCampusForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const finalCampusInfo = {
+      ...formData,
+      imageUrl: formData.imageUrl ||
+        `https://static.vecteezy.com/system/resources/thumbnails/022/425/475/small/icon-school-building-elements-icons-in-line-style-good-for-prints-web-posters-logo-site-plan-map-infographics-etc-vector.jpg`, // Default image URL
+    };
+
     if (!formData.name || !formData.address) {
       setError({
         ...error,
@@ -83,7 +89,7 @@ const NewCampusForm = () => {
     try {
       setApiError("");
       await axios.post(`${API_BASE}/campuses`, {
-        ...formData,
+        ...finalCampusInfo,
         studentIds: enrolled.map((s) => s.id),
       });
       setFormData({
