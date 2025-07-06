@@ -8,10 +8,11 @@ import { Link } from "react-router-dom";
 const CampusList = () => {
   const [campus, setCampuses] = useState([]);
 
-  const apiUrl = "https://crud-backend-gules-rho.vercel.app";
+  const API_BASE = window.location.hostname === "localhost" ? "http://localhost:8080/api" : "https://crud-backend-gules-rho.vercel.app/api";
+
   async function fetchAllCampuses() {
     try {
-      const response = await axios.get("http://localhost:8080/api/campuses");
+      const response = await axios.get(`${API_BASE}/campuses`);
       setCampuses(response.data);
     } catch (error) {
       console.error("Error fetching Campuses", error);
