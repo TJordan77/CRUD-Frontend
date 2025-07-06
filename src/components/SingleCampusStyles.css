@@ -37,3 +37,20 @@ body {
   margin-bottom: 0.5rem;
   color: #2c3e50;
 }
+
+.single-campus p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.single-campus strong {
+  display: inline-block;
+  width: 100px;
+  color: #555;
+}
+
+.single-campus ul {
+  list-style: none;
+  padding-left: 0;
+}
