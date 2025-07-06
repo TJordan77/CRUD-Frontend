@@ -54,3 +54,39 @@ body {
   list-style: none;
   padding-left: 0;
 }
+
+.single-campus li {
+  margin: 0.5rem 0;
+}
+
+.single-campus a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.single-campus a:hover {
+  color: #1d6fa5;
+  text-decoration: underline;
+}
+
+.edit-campus-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #2ecc71;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-campus-btn:hover {
+  background-color: #27ae60;
+}
+
+.edit-campus-btn:active {
+  background-color: #1e8449;
+}
