@@ -35,8 +35,15 @@ const NewStudent = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const finalStudentInfo = {
+      ...studentInfo,
+      imageUrl: studentInfo.imageUrl || `https://ui-avatars.com/api/?name=${studentInfo.firstName}+${studentInfo.lastName}&background=random`, // Default image URL
+    };
+
+
     try {
-      const { data } = await axios.post(`${API_BASE}/students`, studentInfo);
+      const { data } = await axios.post(`${API_BASE}/students`, finalStudentInfo);
       if (data && data.id) {
         navigate(`/students/${data.id}`);
       }
