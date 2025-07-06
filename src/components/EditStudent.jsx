@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import axios from "axios";
+import "./EditStudentStyles.css"
 
 const API_BASE = window.location.hostname === "localhost" ? "http://localhost:8080/api" : "https://crud-backend-gules-rho.vercel.app/api";
 
@@ -9,7 +10,7 @@ const EditStudent = () => {
   const navigate = useNavigate();
   const [student, setStudent] = useState(null);
   const [campus, setCampus] = useState(null);
-  const [form, setForm] = useState({firstName: "", lastName: "", email: "", gpa: "", imageUrl: "", campusId: ""});
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", gpa: "", imageUrl: "", campusId: "" });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(true);
   const [availableCampuses, setAvailableCampuses] = useState([]);
@@ -110,69 +111,93 @@ const EditStudent = () => {
   if (!student) return <p>Student not found</p>;
 
   return (
-    <div>
-      <h2>Edit Student</h2>
+    <div className="edit-student-container">
+      <h2 className="edit-student-title">Edit Student</h2>
+
       {campus && (
-        <p>Currently enrolled in: <strong>{campus.name}</strong></p>
+        <p style={{ textAlign: "center", marginBottom: "1rem" }}>
+          Currently enrolled in: <strong>{campus.name}</strong>
+        </p>
       )}
-      <form onSubmit={handleSubmit}>
+
+      <form className="student-form" onSubmit={handleSubmit}>
         {form.imageUrl && (
           <div>
-            <img src={form.imageUrl} alt="Student Avatar" style={{ maxWidth: 150 }} />
+            <img
+              src={form.imageUrl}
+              alt="Student Avatar"
+              className="student-image-preview"
+            />
           </div>
         )}
 
         <label>
           First Name:
           <input name="firstName" value={form.firstName} onChange={handleChange} />
-          {errors.firstName && <span>{errors.firstName}</span>}
+          {errors.firstName && <span className="error">{errors.firstName}</span>}
         </label>
-        <br />
 
         <label>
           Last Name:
           <input name="lastName" value={form.lastName} onChange={handleChange} />
-          {errors.lastName && <span>{errors.lastName}</span>}
+          {errors.lastName && <span className="error">{errors.lastName}</span>}
         </label>
-        <br />
 
         <label>
           Email:
-          <input type="email" name="email" value={form.email} onChange={handleChange} />
-          {errors.email && <span>{errors.email}</span>}
+          <input
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+          />
+          {errors.email && <span className="error">{errors.email}</span>}
         </label>
-        <br />
 
         <label>
           GPA (0–4):
-          <input type="number" step="0.01" min="0" max="4" name="gpa" value={form.gpa} onChange={handleChange} />
-          {errors.gpa && <span>{errors.gpa}</span>}
+          <input
+            type="number"
+            step="0.01"
+            min="0"
+            max="4"
+            name="gpa"
+            value={form.gpa}
+            onChange={handleChange}
+          />
+          {errors.gpa && <span className="error">{errors.gpa}</span>}
         </label>
-        <br />
 
         <label>
           Image URL:
           <input name="imageUrl" value={form.imageUrl} onChange={handleChange} />
-          {errors.imageUrl && <span>{errors.imageUrl}</span>}
+          {errors.imageUrl && <span className="error">{errors.imageUrl}</span>}
         </label>
-        <br />
 
         <label>
           Campus:
           <select name="campusId" value={form.campusId} onChange={handleChange}>
             <option value="">— None —</option>
-            {availableCampuses.map(c => (
-              <option key={c.id} value={c.id}>{c.name}</option>
+            {availableCampuses.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
             ))}
           </select>
         </label>
-        <br />
 
-        <button type="submit">Save</button>
-        <button type="button" onClick={() => navigate(-1)}>Cancel</button>
-        <button type="button" onClick={handleDelete}>Delete</button>
+        <div className="student-form-buttons">
+          <button type="submit">Save</button>
+          <button type="button" onClick={() => navigate(-1)}>
+            Cancel
+          </button>
+          <button type="button" className="delete-student-btn" onClick={handleDelete}>
+            Delete
+          </button>
+        </div>
       </form>
     </div>
+
   );
 };
 
